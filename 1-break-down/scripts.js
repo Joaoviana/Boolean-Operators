@@ -1,6 +1,8 @@
 // a || ((b > c) && (d >= e))
 
 function trace() {
+	console.log("-----------------");
+
 	// read & clean user input
 	var a_type = document.getElementById("a-type").value;
 	var a_value = document.getElementById("a-value").value;
@@ -22,12 +24,12 @@ function trace() {
 	var e_value = document.getElementById("e-value").value;
 	var e = cast(e_type, e_value);
 	
-	var s0 = { 
-		a: {type: typeof a, value: a},
-		b: {type: typeof b, value: b},
-		c: {type: typeof c, value: c},
-		b: {type: typeof d, value: d},
-		e: {type: typeof e, value: e}
+	var s0 = {
+		a: {[a_type]: a},
+		b: {[b_type]: b},
+		c: {[c_type]: c},
+		d: {[d_type]: d},
+		e: {[e_type]: e}
 	};
 		
 	var expected_type = document.getElementById("expected-type").value;
@@ -38,14 +40,14 @@ function trace() {
 	// do the logic
 	var s1;
 	try {
-		s1 = a > b;
+		s1 = b > c;
 	} catch(err) {
 		throw(err);
 	};
 
 	var s2;
 	try {
-		s2 = c >= d;
+		s2 = d >= e;
 	} catch(err) {
 		throw(err);
 	};
@@ -59,14 +61,15 @@ function trace() {
 
 	var sf;
 	try {
-		sf = e || s3;
+		sf = a || s3;
 	} catch(err) {
 		throw(err);
 	};
 
 	// display to user
 	var s0_display = document.getElementById("s0");
-	s0_display.innerHTML = JSON.stringify(s0);
+	s0_display.innerHTML = "(inspect page)";
+	console.log(s0);
 
 	var s1_display = document.getElementById("s1");
 	s1_display.innerHTML = typeof s1 + ": " + s1;
@@ -85,7 +88,7 @@ function trace() {
 
 function cast(type, value) {
 
-	if (type == "Number") {
+    if (type == "Number") {
     	return Number(value);
 
     } else if (type == "String") {
@@ -95,8 +98,11 @@ function cast(type, value) {
     	return null;
 
     } else if (type == "Boolean") {
-    	// why is this not quite right?
-    	return Boolean(value);
+		if (value === "true") {
+			return true;
+		} else {
+			return false;
+		};
     };
     // functions return undefined by default
 };
@@ -110,6 +116,9 @@ function clear_table() {
 
 	var s2_display = document.getElementById("s2");
 	s2_display.innerHTML = "";
+	
+	var s3_display = document.getElementById("s3");
+	s3_display.innerHTML = "";
 
 	var sf_display = document.getElementById("sf");
 	sf_display.innerHTML = "";
