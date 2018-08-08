@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>op prec and bool</title>
+  <title>op prec & boo</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -16,91 +16,99 @@
 	<script src="scripts.js"></script>
 	<script src="trace-block.js"></script>
 
+	<!-- <h2> a || ((b > c) && (d >= e)) <h2> -->
 
-	<h2> a || ((b > c) && (d >= e)) <h2>
+	<div class="navbar">
+	  <a>a ||</a>
+	  <a>( (b > c)</a>
+	  <a>&&</a>
+	  <a>(d >= e) )</a>
+	  <a href="../index.html" style="float:right">home</a>
+	</div>
 
-	Input:
-	<br>
-		<input type="text" value="type" id="a-type">
-		<input type="text" value="value" id="a-value">
-	<br>
-	<br>
-		<input type="text" value="type" id="b-type">
-		<input type="text" value="value" id="b-value">
-	<br>
-	<br>
-		<input type="text" value="type" id="c-type">
-		<input type="text" value="value" id="c-value">
-	<br>
-	<br>
-		<input type="text" value="type" id="d-type">
-		<input type="text" value="value" id="d-value">
-	<br>
-	<br>
-		<input type="text" value="type" id="e-type">
-		<input type="text" value="value" id="e-value">
-	<br>
-	Expected:
-	<br>
-	<input type="text" value="type" id="expected-type">
-	<input type="text" value="value" id="expected-value">
+	<div class="main">
+		<table>
+			<tr>
+				<td>
+					Input:
+					<br>
+					 a:	<input type="text" value="type" id="a-type">
+						<input type="text" value="value" id="a-value">
+					<br>
+					 b:	<input type="text" value="type" id="b-type">
+						<input type="text" value="value" id="b-value">
+					<br>
+					 c:	<input type="text" value="type" id="c-type">
+						<input type="text" value="value" id="c-value">
+					<br>
+					 d:	<input type="text" value="type" id="d-type">
+						<input type="text" value="value" id="d-value">
+					<br>
+					 e:	<input type="text" value="type" id="e-type">
+						<input type="text" value="value" id="e-value">
+					<br>	
+					Expected:
+					<br>
+					<input type="text" value="type" id="expected-type">
+					<input type="text" value="value" id="expected-value">
+				</td>
+			</tr>
+		</table>
 
-	<table>
-	  <tr>
-	    <th>step</th>
-	    <th>state</th> 
-	    <th>operation</th>
-	  </tr>
-	  <tr>
-	    <td>initial state</td>
-	    <td id="s0"></td> 
-	    <td><button type="button" onclick="trace()">trace it</button></td>
-	  </tr>
-	  <tr>
-	    <td></td>
-	    <td></td> 
-	    <td id="o1">a>b;</td>
-	  </tr>
-	  <tr>
-	    <td>state 1</td>
-	    <td id="s1"></td> 
-	    <td></td>
-	  </tr>
-	  <tr>
-	    <td></td>
-	    <td></td> 
-	    <td id="o2">c>=d;</td>
-	  </tr>
-	  <tr>
-	    <td>state 2</td>
-	    <td id="s2"></td> 
-	    <td></td>
-	  </tr>
-	  <tr>
-	    <td></td>
-	    <td></td> 
-	    <td id="o3">s1 && s2;</td>
-	  </tr>
-	  <tr>
-	    <td>state 1</td>
-	    <td id="s3"></td> 
-	    <td></td>
-	  </tr>
-	  <tr>
-	    <td></td>
-	    <td></td> 
-	    <td id="o4">e || s3;</td>
-	  </tr>
-	  <tr>
-	    <td>final state</td>
-	    <td id="sf"></td> 
-	    <td></td>
-	  </tr>
-	</table>
-	<button type="button" onclick="clear_table()">clear table</button>
+		<br>
 
-
-	<br><br>
-	<a href="../index.html">back to index</a>
+		<table>
+		  <tr>
+		    <th>step</th>
+		    <th>state</th> 
+		    <th>operation</th>
+		  </tr>
+		  <tr>  <!-- 	s0    -->
+		    <td>initial state</td>
+		    <td id="s0"></td> 
+		    <td><button type="button" onclick="trace()">trace it</button></td>
+		  </tr>
+		  <tr>  <!-- 	o1    -->
+		    <td></td>
+		    <td></td> 
+		    <td id="o1">b > c;</td>
+		  </tr>
+		  <tr>  <!-- 	s1    -->
+		    <td>step 1</td>
+		    <td id="s1"></td> 
+		    <td></td>
+		  </tr>
+		  <tr>  <!-- 	o2    -->
+		    <td></td>
+		    <td></td> 
+		    <td id="o2">d >= e;</td>
+		  </tr>
+		  <tr>  <!-- 	s2    -->
+		    <td>step 2</td>
+		    <td id="s2"></td> 
+		    <td></td>
+		  </tr>
+		  <tr>  <!-- 	o3    -->
+		    <td></td>
+		    <td></td> 
+		    <td id="o3">s1 && s2;</td>
+		  </tr>
+		  <tr>  <!-- 	s3    -->
+		    <td>step 3</td>
+		    <td id="s3"></td> 
+		    <td></td>
+		  </tr>
+		  <tr>  <!-- 	o4    -->
+		    <td></td>
+		    <td></td> 
+		    <td id="o4">a || s3;</td>
+		  </tr>
+		  <tr>
+		    <td>final state</td>
+		    <td id="sf"></td> 
+		    <td><button type="button" onclick="clear_table()">clear table</button></td>
+		  </tr>
+		</table>
+	</div>
 </body>
 </html>
