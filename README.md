@@ -1,7 +1,5 @@
 ## Boolean-Operators
 
-## Incremental-Operators
-
 
 ### Index
 * [Learning Objective](#learning-objective)
