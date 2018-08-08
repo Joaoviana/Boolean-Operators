@@ -1,11 +1,35 @@
-// Number(String(input).replace("12", ""));
+// a || ((b > c) && (d >= e))
 
 function trace() {
 	// read & clean user input
-	var s0_type = document.getElementById("s0-type").value;
-	var s0_value = document.getElementById("s0-value").value;
-	var s0 = cast(s0_type, s0_value);
+	var a_type = document.getElementById("a-type").value;
+	var a_value = document.getElementById("a-value").value;
+	var a = cast(a_type, a_value);
+	
+	var b_type = document.getElementById("b-type").value;
+	var b_value = document.getElementById("b-value").value;
+	var b = cast(b_type, b_value);
 
+	var c_type = document.getElementById("c-type").value;
+	var c_value = document.getElementById("c-value").value;
+	var c = cast(c_type, c_value);
+	
+	var d_type = document.getElementById("d-type").value;
+	var d_value = document.getElementById("d-value").value;
+	var d = cast(d_type, d_value);
+	
+	var e_type = document.getElementById("e-type").value;
+	var e_value = document.getElementById("e-value").value;
+	var e = cast(e_type, e_value);
+	
+	var s0 = { 
+		a: {type: typeof a, value: a},
+		b: {type: typeof b, value: b},
+		c: {type: typeof c, value: c},
+		b: {type: typeof d, value: d},
+		e: {type: typeof e, value: e}
+	};
+		
 	var expected_type = document.getElementById("expected-type").value;
 	var expected_value = document.getElementById("expected-value").value;
 	var expected = cast(expected_type, expected_value);
@@ -14,34 +38,44 @@ function trace() {
 	// do the logic
 	var s1;
 	try {
-		s1 = String(s0);
+		s1 = a > b;
 	} catch(err) {
 		throw(err);
 	};
 
 	var s2;
 	try {
-		s2 = s1.replace("12", "");
+		s2 = c >= d;
+	} catch(err) {
+		throw(err);
+	};
+	
+	var s3;
+	try {
+		s3 = s1 && s2;
 	} catch(err) {
 		throw(err);
 	};
 
 	var sf;
 	try {
-		sf = Number(s2);
+		sf = e || s3;
 	} catch(err) {
 		throw(err);
 	};
 
 	// display to user
 	var s0_display = document.getElementById("s0");
-	s0_display.innerHTML = s0_type + ": " + s0_value;
+	s0_display.innerHTML = JSON.stringify(s0);
 
 	var s1_display = document.getElementById("s1");
 	s1_display.innerHTML = typeof s1 + ": " + s1;
 
 	var s2_display = document.getElementById("s2");
 	s2_display.innerHTML = typeof s2 + ": " + s2;
+	
+	var s3_display = document.getElementById("s3");
+	s3_display.innerHTML = typeof s3 + ": " + s3;
 
 	var sf_display = document.getElementById("sf");
 	sf_display.innerHTML = typeof sf + ": " + sf;
