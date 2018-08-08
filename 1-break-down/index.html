@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+	<script src="scripts.js"></script>
+	<script src="trace-block.js"></script>
+
+
+	<h2> Number(String(12345).replace("12", "")); <h2>
+
+	Input:
+	<br>
+		<input type="text" value="type" id="s0-type">
+		<input type="text" value="value" id="s0-value">
+	<br>
+	Expected:
+	<br>
+	<input type="text" value="type" id="expected-type">
+	<input type="text" value="value" id="expected-value">
+
+	<table>
+	  <tr>
+	    <th>step</th>
+	    <th>state</th> 
+	    <th>operation</th>
+	  </tr>
+	  <tr>
+	    <td>initial state</td>
+	    <td id="s0"></td> 
+	    <td><button type="button" onclick="trace()">trace it</button></td>
+	  </tr>
+	  <tr>
+	    <td></td>
+	    <td></td> 
+	    <td id="o1">String(s0);</td>
+	  </tr>
+	  <tr>
+	    <td>state 1</td>
+	    <td id="s1"></td> 
+	    <td></td>
+	  </tr>
+	  <tr>
+	    <td></td>
+	    <td></td> 
+	    <td id="o2">s1.replace("12", "");</td>
+	  </tr>
+	  <tr>
+	    <td>state 2</td>
+	    <td id="s2"></td> 
+	    <td></td>
+	  </tr>
+	  <tr>
+	    <td></td>
+	    <td></td> 
+	    <td id="o2">Number(s2);</td>
+	  </tr>
+	  <tr>
+	    <td>final state</td>
+	    <td id="sf"></td> 
+	    <td></td>
+	  </tr>
+	</table>
+	<button type="button" onclick="clear_table()">clear table</button>
+
+
+	<br><br>
+	<a href="../index.html">back to index</a>
+</body>
+</html>
