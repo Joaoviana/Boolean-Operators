@@ -34,7 +34,7 @@ true || (("abc" > "abd") && (4 >= "3"));
 
 [Replit](https://repl.it/@Joaoviana/Boolean-Operators)
 
-[PyTut](https://goo.gl/PzbYtw)
+[PyTut](https://goo.gl/AKjqFv)
  
 [TOP](#index)
 
@@ -48,5 +48,8 @@ ___
 ___
 
 ## Helpful Links
+[StackOverflow Post](https://stackoverflow.com/questions/11157814/which-logic-operator-takes-precedence)
+
+
 
 
